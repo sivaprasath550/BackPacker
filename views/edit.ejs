@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Post</title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="edit-form-container">
+    <div class="edit-form">
+      <h1>Edit Post</h1>
+      <form method="POST" action="/posts/<%= id %>/edit">
+        <input type="text" name="title" value="<%= post.title %>" required>
+        <textarea name="content" rows="5" required><%= post.content %></textarea>
+        <div class="form-actions">
+          <button type="submit" class="button save">Save Changes</button>
+          <a href="/" class="button cancel">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

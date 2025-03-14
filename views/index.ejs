@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BackPacker</title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>BackPacker</h1>
+      <h2>Create Your Post</h2>
+      <form method="POST" action="/posts">
+        <input type="text" name="title" placeholder="Post Title" required>
+        <textarea name="content" placeholder="Write your post..." rows="5" required></textarea>
+        <button type="submit">Publish</button>
+      </form>
+    </header>
+
+    <main>
+      <% posts.forEach((post, index) => { %>
+        <article class="post-card">
+          <div class="post-header">
+            <h3><%= post.title %></h3>
+            <span class="post-date"><%= post.date %></span>
+          </div>
+          <div class="post-content"><%= post.content %></div>
+          <div class="post-actions">
+            <a href="/posts/<%= index %>/edit" class="button edit">Edit</a>
+            <form method="POST" action="/posts/<%= index %>/delete" onsubmit="return confirm('Are you sure you want to delete this post?');">
+              <button type="submit" class="button delete">Delete</button>
+            </form>
+          </div>
+        </article>
+      <% }) %>
+    </main>
+  </div>
+</body>
+</html>
